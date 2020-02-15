@@ -19,4 +19,3 @@ print(maCopie, '\n');
 # - Créer une nouvelle variable monAutreCopie, qui sera une copie de maVariable
 # - Assigner la valeur de monAutreCopie dans la variable maCopie
 # - Afficher la valeur des 3 variables
-

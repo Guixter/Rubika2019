@@ -26,11 +26,12 @@ print(type(monString), monString, '\n');
 
 
 #### TODO (CASTING) :
+# - Décommenter la ligne de code
 # - Afficher le type de la variable ageUtilisateur
 # - Créer une variable realAgeUtilisateur qui cast la variable ageUtilisateur en int.
 # - Afficher le type et la valeur de la variable realAgeUtilisateur.
 
-ageUtilisateur = input("Quel est votre âge ?");
+#ageUtilisateur = input("Quel est votre âge ?");
 
 
 
