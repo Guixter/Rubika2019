@@ -2,8 +2,6 @@
 #            VARIABLES
 ######################################
 
-print ("Début du test.", '\n');
-
 # Création d'une variable à partir d'une constante
 maVariable = 35;
 print(maVariable, '\n');
@@ -19,6 +17,6 @@ print(maCopie, '\n');
 
 #### TODO :
 # - Créer une nouvelle variable monAutreCopie, qui sera une copie de maVariable
-# - Attributer la valeur de monAutreCopie dans la variable maCopie
+# - Assigner la valeur de monAutreCopie dans la variable maCopie
 # - Afficher la valeur des 3 variables
 
