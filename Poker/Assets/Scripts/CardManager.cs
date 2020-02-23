@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class CardManager : MonoBehaviour
 {
-    public CardValue value;
-    public CardType type;
+    public Card card;
     public bool hidden;
     public Sprite hiddenSprite;
     public SpriteRenderer cardRenderer;
 
-    public void SetCard(CardValue value, CardType type, bool hidden)
+    public void SetCard(Card card, bool hidden)
     {
-        this.value = value;
-        this.type = type;
+        this.card = card;
         this.hidden = hidden;
         
         if (hidden)
@@ -22,12 +20,34 @@ public class Card : MonoBehaviour
         }
         else
         {
-            var spritePath = $"PlayingCards/{TypeName(type)}{ValueName(value)}";
-
-            Debug.Log(spritePath);
+            var spritePath = $"PlayingCards/{card.Name()}";
             var sprite = Resources.Load<Sprite>(spritePath);
             cardRenderer.sprite = sprite;
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        SetCard(this.card, this.hidden);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+
+[System.Serializable]
+public struct Card
+{
+    public CardValue value;
+    public CardType type;
+
+    public string Name()
+    {
+        return $"{TypeName(type)}{ValueName(value)}";
     }
 
     private string TypeName(CardType type)
@@ -81,18 +101,33 @@ public class Card : MonoBehaviour
 
         return "";
     }
+}
 
+[System.Serializable]
+public class Hand
+{
+    public CardManager[] managers;
 
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector]
+    public Card[] cards;
+
+    public void Draw(Stack<Card> deck, int nbCards)
     {
-        SetCard(this.value, this.type, this.hidden);
+        cards = new Card[nbCards];
+        for (var j = 0; j < nbCards; j++)
+        {
+            cards[j] = deck.Pop();
+        }
+
+        UpdateManagers();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateManagers()
     {
-        
+        for (var i = 0; i < cards.Length; i++)
+        {
+            managers[i].SetCard(cards[i], false);
+        }
     }
 }
 
