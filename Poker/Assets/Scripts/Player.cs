@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Player : ScriptableObject
+public class Player : MonoBehaviour
 {
     public Hand hand;
+    public string name;
+    public TextMesh textmesh;
 
     // TODO
+
+    public void Start()
+    {
+        textmesh.text = name;
+    }
 }

@@ -111,7 +111,7 @@ public class Hand
     [HideInInspector]
     public Card[] cards;
 
-    public void Draw(Stack<Card> deck, int nbCards)
+    public void Draw(Stack<Card> deck, int nbCards, bool hidden)
     {
         cards = new Card[nbCards];
         for (var j = 0; j < nbCards; j++)
@@ -119,14 +119,23 @@ public class Hand
             cards[j] = deck.Pop();
         }
 
-        UpdateManagers();
+        UpdateManagers(hidden);
     }
 
-    private void UpdateManagers()
+    private void UpdateManagers(bool hidden)
     {
         for (var i = 0; i < cards.Length; i++)
         {
-            managers[i].SetCard(cards[i], false);
+            managers[i].SetCard(cards[i], hidden);
+        }
+    }
+
+    public IEnumerator Animate(float time, bool animateIn = true)
+    {
+        foreach (var cardManager in managers)
+        {
+            cardManager.gameObject.SetActive(animateIn);
+            yield return new WaitForSeconds(time);
         }
     }
 }
