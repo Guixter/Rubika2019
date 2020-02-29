@@ -128,6 +128,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112962495}
     m_Modifications:
+    - target: {fileID: 2412083801495039451, guid: b30c2b04b72b8fd469ae21323d0885dc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 78998314942cf794786a837260fddeeb,
+        type: 3}
     - target: {fileID: 2412083801953711972, guid: b30c2b04b72b8fd469ae21323d0885dc,
         type: 3}
       propertyPath: m_Name
@@ -498,6 +504,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112962495}
     m_Modifications:
+    - target: {fileID: 2412083801495039451, guid: b30c2b04b72b8fd469ae21323d0885dc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80a0d0770e8bb9f4ba714d5c5e782039,
+        type: 3}
     - target: {fileID: 2412083801953711972, guid: b30c2b04b72b8fd469ae21323d0885dc,
         type: 3}
       propertyPath: m_Name
@@ -908,7 +920,8 @@ MonoBehaviour:
     - {fileID: 1122126685}
     - {fileID: 2140602245}
     cards: []
-  AnimationTime: 0.1
+  AnimationTime: 100
+  nbChipsPerPlayer: 100
 --- !u!4 &699853105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2412083801953711973, guid: b30c2b04b72b8fd469ae21323d0885dc,
@@ -1054,6 +1067,7 @@ MonoBehaviour:
     - {fileID: 575173611}
     cards: []
   name: Player 2
+  chips: 0
   textmesh: {fileID: 2134178033}
 --- !u!4 &777944812
 Transform:
@@ -1216,6 +1230,7 @@ MonoBehaviour:
     - {fileID: 491365939}
     cards: []
   name: Player 1
+  chips: 0
   textmesh: {fileID: 2018052425}
 --- !u!1001 &1026903834
 PrefabInstance:
@@ -1351,6 +1366,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112962495}
     m_Modifications:
+    - target: {fileID: 2412083801495039451, guid: b30c2b04b72b8fd469ae21323d0885dc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0bcb19d93a016e94f93a7e2fac280bed,
+        type: 3}
     - target: {fileID: 2412083801953711972, guid: b30c2b04b72b8fd469ae21323d0885dc,
         type: 3}
       propertyPath: m_Name
@@ -1655,6 +1676,7 @@ MonoBehaviour:
     - {fileID: 575138316}
     cards: []
   name: Player 4
+  chips: 0
   textmesh: {fileID: 198660324}
 --- !u!4 &1805526343
 Transform:
@@ -1708,6 +1730,7 @@ MonoBehaviour:
     - {fileID: 879069427}
     cards: []
   name: Player 3
+  chips: 0
   textmesh: {fileID: 468643837}
 --- !u!4 &1994209319
 Transform:
@@ -1919,6 +1942,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112962495}
     m_Modifications:
+    - target: {fileID: 2412083801495039451, guid: b30c2b04b72b8fd469ae21323d0885dc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 56b480213ded30244b28e72660856365,
+        type: 3}
     - target: {fileID: 2412083801953711972, guid: b30c2b04b72b8fd469ae21323d0885dc,
         type: 3}
       propertyPath: m_Name
@@ -2011,6 +2040,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112962495}
     m_Modifications:
+    - target: {fileID: 2412083801495039451, guid: b30c2b04b72b8fd469ae21323d0885dc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fd33bc056f8a8474893abf3c5ac74730,
+        type: 3}
     - target: {fileID: 2412083801953711972, guid: b30c2b04b72b8fd469ae21323d0885dc,
         type: 3}
       propertyPath: m_Name

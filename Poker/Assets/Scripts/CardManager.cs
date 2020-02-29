@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
@@ -130,12 +131,13 @@ public class Hand
         }
     }
 
-    public IEnumerator Animate(float time, bool animateIn = true)
+    public async Task Animate(int time, bool animateIn = true)
     {
         foreach (var cardManager in managers)
         {
-            cardManager.gameObject.SetActive(animateIn);
-            yield return new WaitForSeconds(time);
+            if (cardManager)
+                cardManager.gameObject.SetActive(animateIn);
+            await Task.Delay(time);
         }
     }
 }

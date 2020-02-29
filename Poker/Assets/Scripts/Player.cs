@@ -6,12 +6,17 @@ public class Player : MonoBehaviour
 {
     public Hand hand;
     public string name;
+    public int chips;
     public TextMesh textmesh;
-
-    // TODO
 
     public void Start()
     {
         textmesh.text = name;
+    }
+
+    public int Bid()
+    {
+        // TODO
+        return 0;
     }
 }
