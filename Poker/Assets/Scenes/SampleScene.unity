@@ -474,7 +474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Player 2
   textmesh: {fileID: 2134178033}
-  gapBetweenCards: 1.2
+  gapBetweenCards: -1.2
 --- !u!4 &777944812
 Transform:
   m_ObjectHideFlags: 0
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Player 1
   textmesh: {fileID: 2018052425}
-  gapBetweenCards: 1.2
+  gapBetweenCards: -1.2
 --- !u!1 &1805526341
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Player 4
   textmesh: {fileID: 198660324}
-  gapBetweenCards: 1.2
+  gapBetweenCards: -1.2
 --- !u!4 &1805526343
 Transform:
   m_ObjectHideFlags: 0

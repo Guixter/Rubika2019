@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 
     float GetCardPosition(int nbCards, int index)
     {
-        return nbCards / 2 * gapBetweenCards;
+        return (index - nbCards / 2) * gapBetweenCards;
     }
 
     public IEnumerator AnimateCards(float time, bool animateIn = true)
@@ -60,6 +60,9 @@ public class Player : MonoBehaviour
 
     public int Bid(int currentBid)
     {
+        // TODO use async for GUI stuff inside coroutines
+        // http://www.stevevermeulen.com/index.php/2017/09/using-async-await-in-unity3d-2017/
+
         switch (Random.Range(0, 3))
         {
             case 0:
