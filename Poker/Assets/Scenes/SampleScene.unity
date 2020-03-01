@@ -440,7 +440,8 @@ MonoBehaviour:
   - {fileID: 1805526342}
   cardPrefab: {fileID: 2412083801953711972, guid: b30c2b04b72b8fd469ae21323d0885dc,
     type: 3}
-  AnimationTime: 0.1
+  AnimationTime: 2
+  AnimationCardTime: 0.1
   nbChipsPerPlayer: 100
 --- !u!1 &777944810
 GameObject:

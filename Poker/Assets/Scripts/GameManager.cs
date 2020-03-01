@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Player[] players;
     public GameObject cardPrefab;
     public float AnimationTime;
+    public float AnimationCardTime;
     public int nbChipsPerPlayer = 100;
 
     private Card[] deck;
@@ -19,19 +20,27 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(HandleGame());
+        PreparePlayers();
+
+        StartCoroutine(GameLoop());
     }
 
-    IEnumerator HandleGame()
+    void PreparePlayers()
     {
-        // TODO give chips to players
-
         currentPlayers = new List<Player>(players);
+        foreach (var player in currentPlayers)
+        {
+            player.chips = nbChipsPerPlayer;
+        }
+    }
+
+    IEnumerator GameLoop()
+    {
         while (currentPlayers.Count > 1)
         {
-            yield return SetupGame();
+            yield return SetupRound();
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(AnimationTime);
 
             var currentBid = -1;
             var lastBidderIndex = -1;
@@ -53,14 +62,20 @@ public class GameManager : MonoBehaviour
             }
 
             // TODO winning animation
+            Debug.Log($"{currentPlayerIndex} won the round");
 
-            yield return Animate(false);
+            yield return AnimateCards(false);
 
-            yield return new WaitForSeconds(3);
+            foreach (var player in currentPlayers)
+            {
+                player.CleanHand();
+            }
+
+            yield return new WaitForSeconds(AnimationTime);
         }
     }
 
-    IEnumerator SetupGame()
+    IEnumerator SetupRound()
     {
         // Create a deck
         deck = new Card[52];
@@ -84,19 +99,18 @@ public class GameManager : MonoBehaviour
         // Give cards to players
         foreach (var player in currentPlayers)
         {
-            player.Draw(popDeck, NB_CARD_PER_HAND, cardPrefab, true);
+            player.DrawHand(popDeck, NB_CARD_PER_HAND, cardPrefab, true);
         }
 
         // Animate the cards in
-        yield return Animate(true);
+        yield return AnimateCards(true);
     }
 
-    IEnumerator Animate(bool animateIn)
+    IEnumerator AnimateCards(bool animateIn)
     {
-        // Animate the cards inforeach (var player in players)
         foreach (var player in currentPlayers)
         {
-            yield return player.Animate(AnimationTime, animateIn);
+            yield return player.AnimateCards(AnimationCardTime, animateIn);
         }
     }
 }

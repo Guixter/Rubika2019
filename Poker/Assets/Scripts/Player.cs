@@ -17,10 +17,8 @@ public class Player : MonoBehaviour
         textmesh.text = name;
     }
 
-    public void Draw(Stack<Card> deck, int nbCards, GameObject cardPrefab, bool hidden)
+    public void DrawHand(Stack<Card> deck, int nbCards, GameObject cardPrefab, bool hidden)
     {
-        // TODO clean the old hand
-
         hand = new CardManager[nbCards];
         for (var i = 0; i < nbCards; i++)
         {
@@ -37,13 +35,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    private float GetCardPosition(int nbCards, int index)
+    public void CleanHand()
     {
-        index -= nbCards / 2;
-        return index * gapBetweenCards;
+        foreach (var manager in hand)
+        {
+            Destroy(manager.gameObject);
+        }
+        hand = new CardManager[0];
     }
 
-    public IEnumerator Animate(float time, bool animateIn = true)
+    float GetCardPosition(int nbCards, int index)
+    {
+        return nbCards / 2 * gapBetweenCards;
+    }
+
+    public IEnumerator AnimateCards(float time, bool animateIn = true)
     {
         foreach (var cardManager in hand)
         {

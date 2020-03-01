@@ -26,18 +26,6 @@ public class CardManager : MonoBehaviour
             cardRenderer.sprite = sprite;
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetCard(this.card, this.hidden);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
 
 [System.Serializable]
