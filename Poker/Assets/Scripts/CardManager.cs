@@ -104,44 +104,6 @@ public struct Card
     }
 }
 
-[System.Serializable]
-public class Hand
-{
-    public CardManager[] managers;
-
-    [HideInInspector]
-    public Card[] cards;
-
-    public void Draw(Stack<Card> deck, int nbCards, bool hidden)
-    {
-        cards = new Card[nbCards];
-        for (var j = 0; j < nbCards; j++)
-        {
-            cards[j] = deck.Pop();
-        }
-
-        UpdateManagers(hidden);
-    }
-
-    private void UpdateManagers(bool hidden)
-    {
-        for (var i = 0; i < cards.Length; i++)
-        {
-            managers[i].SetCard(cards[i], hidden);
-        }
-    }
-
-    public async Task Animate(int time, bool animateIn = true)
-    {
-        foreach (var cardManager in managers)
-        {
-            if (cardManager)
-                cardManager.gameObject.SetActive(animateIn);
-            await Task.Delay(time);
-        }
-    }
-}
-
 public enum CardValue
 {
     _2,

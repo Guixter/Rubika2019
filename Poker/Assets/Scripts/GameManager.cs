@@ -7,33 +7,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static readonly int NB_CARD_PER_HAND = 2;
-    public static readonly int NB_CARD_BANK = 5;
-
+    public static readonly int NB_CARD_PER_HAND = 5;
 
     public Player[] players;
     public GameObject cardPrefab;
-    public Hand bankHand;
-    public int AnimationTime;
+    public float AnimationTime;
     public int nbChipsPerPlayer = 100;
 
     private Card[] deck;
     private List<Player> currentPlayers;
-    private Task manager;
 
     void Start()
     {
-        HandleGame();
+        StartCoroutine(HandleGame());
     }
 
-    async void HandleGame()
+    IEnumerator HandleGame()
     {
+        // TODO give chips to players
+
         currentPlayers = new List<Player>(players);
         while (currentPlayers.Count > 1)
         {
-            await SetupGame();
+            yield return SetupGame();
 
-            await Task.Delay(3000);
+            yield return new WaitForSeconds(3);
 
             var currentBid = -1;
             var lastBidderIndex = -1;
@@ -42,7 +40,7 @@ public class GameManager : MonoBehaviour
             while (lastBidderIndex != currentPlayerIndex)
             {
                 var player = currentPlayers[currentPlayerIndex];
-                var bid = player.Bid();
+                var bid = player.Bid(Math.Max(currentBid, 0));
 
                 if (bid != currentBid)
                 {
@@ -56,13 +54,13 @@ public class GameManager : MonoBehaviour
 
             // TODO winning animation
 
-            await Animate(false);
+            yield return Animate(false);
 
-            await Task.Delay(3000);
+            yield return new WaitForSeconds(3);
         }
     }
 
-    async Task SetupGame()
+    IEnumerator SetupGame()
     {
         // Create a deck
         deck = new Card[52];
@@ -86,24 +84,19 @@ public class GameManager : MonoBehaviour
         // Give cards to players
         foreach (var player in currentPlayers)
         {
-            player.hand.Draw(popDeck, NB_CARD_PER_HAND, true);
-            player.chips = nbChipsPerPlayer;
+            player.Draw(popDeck, NB_CARD_PER_HAND, cardPrefab, true);
         }
 
-        // Give cards to the bank
-        bankHand.Draw(popDeck, NB_CARD_BANK, false);
-
         // Animate the cards in
-        await Animate(true);
+        yield return Animate(true);
     }
 
-    async Task Animate(bool animateIn)
+    IEnumerator Animate(bool animateIn)
     {
         // Animate the cards inforeach (var player in players)
         foreach (var player in currentPlayers)
         {
-            await player.hand.Animate(AnimationTime, animateIn);
+            yield return player.Animate(AnimationTime, animateIn);
         }
-        await bankHand.Animate(AnimationTime, animateIn);
     }
 }
